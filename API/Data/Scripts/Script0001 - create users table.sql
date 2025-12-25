@@ -1,0 +1,6 @@
+CREATE TABLE Users (
+    Id CHAR(50) NOT NULL,
+    DisplayName VARCHAR(255) NOT NULL,
+    Email VARCHAR(255) NOT NULL,
+    PRIMARY KEY (Id)
+);

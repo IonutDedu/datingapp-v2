@@ -1,6 +1,6 @@
 namespace API.Entities;
 
-public class AppUser
+public sealed class AppUser
 {
     //Table users
     public string Id { get; set; } = Guid.NewGuid().ToString();

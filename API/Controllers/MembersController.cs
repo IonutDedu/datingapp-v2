@@ -2,12 +2,12 @@ using API.Data;
 using API.Entities;
 using Microsoft.AspNetCore.Mvc;
 using Dapper;
+using Microsoft.AspNetCore.Authorization;
+using System.Runtime.CompilerServices;
 
 namespace API.Controllers
 {
-    [Route("api/[controller]")] //localhost:5001/api/members
-    [ApiController]
-    public class MembersController(IDbConnectionFactory _connection) : ControllerBase
+    public sealed class MembersController(IDbConnectionFactory _connection) : BaseApiController
     {
        [HttpGet]
        public async Task<ActionResult<IReadOnlyList<AppUser>>> GetMembers(){
@@ -21,6 +21,7 @@ namespace API.Controllers
            return members;
        }
 
+       [Authorize]
        [HttpGet("{id}")] //localhost:5001/api/members/bod-id
        public async Task<ActionResult<AppUser>> GetMember(string id)
         {
